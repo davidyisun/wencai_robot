@@ -35,7 +35,7 @@ def get_result(question):
         res.append(_res)
     return no_res, res
 if __name__ == '__main__':
-    no_res = question_get.get_question()
+    no_res = question_get.get_question()[0:10]
     data = []
     for i in range(20):
         no_res, _data = get_result(no_res)
