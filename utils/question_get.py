@@ -66,10 +66,13 @@ def get_question():
     time_form = t_f['time']+t_f['form']
     q_forms = q_forms+time_form.tolist()
     # 组合 指标+形态
-    together_list = q_indicators+q_forms
+    together_list = ind_thr[0].tolist()+forms['form'].tolist()
     groups = []
     for i in itertools.combinations(together_list, 2):
-        q = i[0]+i[1]
+        try:
+            q = i[0]+i[1]
+        except Exception as e:
+            pass
         groups.append(q)
     res = []
     res = res + q_indicators + q_forms + groups
@@ -92,5 +95,5 @@ def recoder_question(batch=10000):
 
 
 if __name__ == '__main__':
-    recoder_question()
+    # recoder_question()
     pass
