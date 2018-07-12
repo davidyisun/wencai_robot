@@ -72,10 +72,25 @@ def get_question():
         q = i[0]+i[1]
         groups.append(q)
     res = []
-    res = res + q_indicators + q_forms
+    res = res + q_indicators + q_forms + groups
     return res
 
 
+def recoder_question(batch=10000):
+    data = get_question()
+    n_batch = len(data) % batch
+    for i in range(n_batch):
+        start = i*batch
+        print('it is {0}'.format(start))
+        if start > len(data):
+            break
+        end = min((i+1)*batch, len(data))
+        d = data[start:end]
+        with codecs.open('./questions.txt', 'a', 'utf8') as f:
+            f.write('\n'.join(d))
+    return
+
+
 if __name__ == '__main__':
-    print(get_question())
+    recoder_question()
     pass
