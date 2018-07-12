@@ -7,12 +7,13 @@ Created on 2018-07-11
 @group:data
 @contact:davidhu@wezhuiyi.com
 """
+import sys
+sys.path.append('../')
 from utils import question_get, request_data
 import datetime
 import json
 import codecs
-import sys
-sys.path.append('../')
+
 def get_result(question):
     ques = question
     no_res = []
